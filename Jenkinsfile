@@ -3,7 +3,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'echo Build'
+        bat 'echo Build'
       }
     }
 
@@ -11,7 +11,7 @@ pipeline {
       parallel {
         stage('Unit Test') {
           steps {
-            sh '''echo Unit test
+            bat '''echo Unit test
 
 '''
           }
@@ -19,7 +19,7 @@ pipeline {
 
         stage('Performance ') {
           steps {
-            sh 'echo Performance'
+            bat 'echo Performance'
           }
         }
 
@@ -28,19 +28,19 @@ pipeline {
 
     stage('Front End') {
       steps {
-        sh 'echo Front End'
+        bat 'echo Front End'
       }
     }
 
     stage('Static analysis') {
       steps {
-        sh 'echo Analysis'
+        bat 'echo Analysis'
       }
     }
 
     stage('Deployement') {
       steps {
-        sh 'echo Deployement'
+        bat 'echo Deployement'
       }
     }
 
