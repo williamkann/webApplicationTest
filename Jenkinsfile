@@ -1,12 +1,10 @@
-pipeline 
-{
-   
-	{
-        stage('Build') { 
+pipeline {
+    agent { docker { image 'maven:3.3.3' } }
+    stages {
+        stage('build') {
             steps {
-                bat 'echo oui' 
+                sh 'mvn --version'
             }
         }
-    
-
+    }
 }
