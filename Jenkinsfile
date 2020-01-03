@@ -2,13 +2,13 @@ pipeline {
     agent {
         docker {
             image 'ubuntu' 
-            sh 'echo oui'
+            bat 'echo oui'
         }
     }
     stages {
         stage('Build') { 
             steps {
-                sh 'mvn -B -DskipTests clean package' 
+                bat 'mvn -B -DskipTests clean package' 
             }
         }
     }
