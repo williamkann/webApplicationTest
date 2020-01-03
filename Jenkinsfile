@@ -1,23 +1,36 @@
 pipeline {
   agent any
   stages {
-    stage('Build') {
+    stage('Test') {
+      agent any
       steps {
-        bat 'echo Build'
+        bat 'echo test'
       }
     }
 
-    stage('Back End') {
-      parallel {
-        stage('Unit Test') {
-          steps {
-            bat '''echo Unit test
+    stage('Build') {
+      agent {
+        docker {
+          image 'maven:3-alpine'
+          args '-v $HOME/.m2:/root/.m2'
+        }
 
-'''
+      }
+      steps {
+        bat 'mvn -B -DskipTests clean package'
+        stash(name: 'war', includes: 'target/**')
+      }
+    }
+
+    stage('Backend') {
+      parallel {
+        stage('Unit') {
+          steps {
+            bat 'echo Unit'
           }
         }
 
-        stage('Performance ') {
+        stage('Performance') {
           steps {
             bat 'echo Performance'
           }
@@ -26,21 +39,21 @@ pipeline {
       }
     }
 
-    stage('Front End') {
+    stage('Frontend') {
       steps {
-        bat 'echo Front End'
+        bat 'echo Frontend'
       }
     }
 
-    stage('Static analysis') {
+    stage('Static Analysis') {
       steps {
-        bat 'echo Analysis'
+        bat 'echo Static Analysis'
       }
     }
 
-    stage('Deployement') {
+    stage('Deploy') {
       steps {
-        bat 'echo Deployement'
+        bat 'echo Deploy'
       }
     }
 
