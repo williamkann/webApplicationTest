@@ -31,7 +31,7 @@ pipeline
 					{
 						unstash 'war'
 						sh 'mvn -B -DtestFailureIgnore test || exit 0'
-						junit '**/surefly-reports/**/*.xml'
+						junit '**/surefire-reports/**/*.xml'
 					},
 					"Performance": 
 					{
