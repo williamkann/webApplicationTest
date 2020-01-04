@@ -46,7 +46,7 @@ pipeline
 		{
 			steps 
 			{
-				sh 'echo Static Analysis'
+				sh 'echo StaticAnalysis'
 			}
 		}
 		stage('Deploy') 
