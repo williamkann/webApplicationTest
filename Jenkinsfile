@@ -42,7 +42,7 @@ pipeline
 			}
 		}
 
-		stage('StaticAnalysis') 
+		stage('Analysis') 
 		{
 			steps 
 			{
