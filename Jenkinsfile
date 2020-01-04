@@ -27,8 +27,17 @@ pipeline
 			steps 
 			{
 				parallel(
-					"Unit":  {sh 'echo Unit'},
-					"Performance": {sh 'echo Performance'}
+					"Unit":  
+					{
+						unstash 'war'
+						sh 'mvn -B -DtestFailureIgnore test || exit 0'
+						junit '**/surefly-reports/**/*.xml'
+					},
+					"Performance": 
+					{
+						unstash 'war'
+						sh '# ./mvn -B gatling:execute'
+					}
 	
 				)
 			}
@@ -42,7 +51,7 @@ pipeline
 			}
 		}
 
-		stage('Analysis') 
+		stage('Analysis ') 
 		{
 			steps 
 			{
