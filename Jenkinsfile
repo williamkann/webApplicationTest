@@ -42,11 +42,11 @@ pipeline
 			}
 		}
 
-		stage('Static Analysis') 
+		stage('StaticAnalysis') 
 		{
 			steps 
 			{
-				sh 'echo StaticAnalysis'
+				sh 'echo oui'
 			}
 		}
 		stage('Deploy') 
