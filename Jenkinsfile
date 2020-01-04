@@ -46,14 +46,14 @@ pipeline
 		{
 			steps 
 			{
-				sh 'Static Analysis'
+				sh 'echo Static Analysis'
 			}
 		}
 		stage('Deploy') 
 		{
 			steps 
 			{
-				sh 'Deploy'
+				sh 'echo Deploy'
 			}
 		}
 	}
