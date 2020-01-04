@@ -1,4 +1,5 @@
-pipeline {
+pipeline 
+{
 	agent any
 	stages 
 	{
@@ -8,29 +9,24 @@ pipeline {
 
 			agent
 			{
-	      			docker {
+	      			docker
+				{
 		    			image 'maven:3-alpine' 
 		    			args '-v /root/.m2:/root/.m2' 
 				}
     			} 
 
-            		steps {
+            		steps 
+			{
             			sh 'mvn -B -DskipTests clean package'
 				stash name: 'war', includes: 'target/**'
-            			}
+         		}
         	}
 		stage('BackEnd') 
 		{
 			steps 
 			{
-				parallel{
-					"Unit": {
-					sh 'echo Unit'
-					},
-					"Performance": {
-					sh 'echo Performance'
-					}
-				}
+				sh 'echo BackEnd'
 			}
 		}
 	}
