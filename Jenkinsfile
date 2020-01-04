@@ -26,7 +26,34 @@ pipeline
 		{
 			steps 
 			{
-				sh 'echo BackEnd'
+				parallel(
+					"Unit":  {sh 'echo Unit'},
+					"Performance": {sh 'echo Performance'}
+	
+				)
+			}
+		}
+
+		stage('FrontEnd') 
+		{
+			steps 
+			{
+				sh 'echo FrontEnd'
+			}
+		}
+
+		stage('Static Analysis') 
+		{
+			steps 
+			{
+				sh 'Static Analysis'
+			}
+		}
+		stage('Deploy') 
+		{
+			steps 
+			{
+				sh 'Deploy'
 			}
 		}
 	}
