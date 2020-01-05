@@ -24,22 +24,9 @@ pipeline
         	}						
 		stage('BackEnd') 
 		{
-			steps 				
+			steps 
 			{
-				parallel(
-					"Unit":  
-					{
-						unstash 'war'
-						sh 'mvn -B -DtestFailureIgnore test || exit 0'
-						junit '**/surefire-reports/**/*.xml'
-					},
-					"Performance": 
-					{
-						unstash 'war'
-						sh '# ./mvn -B gatling:execute'
-					}
-	
-				)
+				sh 'echo BackEnd'
 			}
 		}
 
