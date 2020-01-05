@@ -49,7 +49,7 @@ pipeline
 		{
 			steps 
 			{
-				sh 'echo Deploy'
+				sh 'echo Dceploy'
 			}
 		}
 	}
