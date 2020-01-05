@@ -26,7 +26,7 @@ pipeline
 		{
 			steps 
 			{
-				sh 'echo BackEnd'
+				sh 'echo Back'
 			}
 		}
 
