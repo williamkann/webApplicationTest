@@ -9,23 +9,37 @@ pipeline
 
 			agent
 			{
-	      			docker				
+	      			docker
 				{
 		    			image 'maven:3-alpine' 
 		    			args '-v /root/.m2:/root/.m2' 
 				}
     			} 
-
+				
             		steps 
 			{
-            			sh 'echo oui'
+            			sh 'mvn -B -DskipTests clean package'
+				stash name: 'war', includes: 'target/**'
          		}
-        	}						
+        	}
 		stage('BackEnd') 
 		{
 			steps 
 			{
-				sh 'echo BackEnd'
+				parallel(
+					"Unit":  
+					{
+						unstash 'war'
+						sh 'mvn -B -DtestFailureIgnore test || exit 0'
+						junit '**/surefire-reports/**/*.xml'
+					},
+					"Performance": 
+					{
+						unstash 'war'
+						sh '# ./mvn -B gatling:execute'
+					}
+	
+				)
 			}
 		}
 
@@ -37,7 +51,7 @@ pipeline
 			}
 		}
 
-		stage('Analysis ')
+		stage('Analysis ') 
 		{
 			steps 
 			{
