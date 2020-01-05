@@ -1,4 +1,4 @@
-pipeline 
+pipeline  
 {
 	agent any
 	stages 
@@ -42,7 +42,7 @@ pipeline
 		{
 			steps 
 			{
-				sh 'echo oui'
+				sh 'echo non'
 			}
 		}
 		stage('Deploy') 
