@@ -18,8 +18,7 @@ pipeline
 
             		steps 
 			{
-            			sh 'mvn -B -DskipTests clean package'
-				stash name: 'war', includes: 'target/**'
+            			sh 'echo oui'
          		}
         	}						
 		stage('BackEnd') 
