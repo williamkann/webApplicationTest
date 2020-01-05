@@ -38,7 +38,7 @@ pipeline
 			}
 		}
 
-		stage('Analysis ') 
+		stage('Analysis ')
 		{
 			steps 
 			{
