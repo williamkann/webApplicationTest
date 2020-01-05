@@ -26,7 +26,7 @@ pipeline
 		{
 			steps 
 			{
-				sh 'echo Back'
+				sh 'echo Bacck'
 			}
 		}
 
