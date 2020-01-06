@@ -29,8 +29,8 @@ pipeline
             			sh 'mvn -B -DskipTests clean package'
 				stash name: 'war', includes: 'target/**'
          		}
-		stage('Test Stage') 
-        	}					
+		}
+		stage('Test Stage') 					
 		{
 			steps 
 			{
