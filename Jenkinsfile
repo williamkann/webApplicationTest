@@ -29,20 +29,12 @@ pipeline
             			sh 'mvn -B -DskipTests clean package'
 				stash name: 'war', includes: 'target/**'
          		}
-        	}						
-		stage('BackEnd') 
+        	}					
+		stage('Test Stage') 
 		{
 			steps 
 			{
-				sh 'echo Bacck'
-			}
-		}
-
-		stage('FrontEnd') 
-		{
-			steps 
-			{
-				sh 'echo FrontEnd'
+				sh 'mvn test'
 			}
 		}
 
