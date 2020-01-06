@@ -1,8 +1,16 @@
-pipeline 
+pipeline                  
 {
 	agent any
 	stages 
 	{
+		stage('Compile Stage') 
+		{
+			steps 
+			{
+				sh 'mvn clean compile'	
+			}
+			
+		}
 	
         	stage('Build')
 		{ 
@@ -26,20 +34,7 @@ pipeline
 		{
 			steps 
 			{
-				parallel(
-					"Unit":  
-					{
-						unstash 'war'
-						sh 'mvn -B -DtestFailureIgnore test || exit 0'
-						junit '**/surefire-reports/**/*.xml'
-					},
-					"Performance": 
-					{
-						unstash 'war'
-						sh '# ./mvn -B gatling:execute'
-					}
-	
-				)
+				sh 'echo Bacck'
 			}
 		}
 
@@ -55,14 +50,14 @@ pipeline
 		{
 			steps 
 			{
-				sh 'echo oui'
+				sh 'echo non'
 			}
 		}
 		stage('Deploy') 
 		{
 			steps 
 			{
-				sh 'echo Deploy'
+				sh 'echo Dceploy'
 			}
 		}
 	}
