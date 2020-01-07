@@ -48,7 +48,7 @@ pipeline
 		{
 			steps
 			{
-				slackSend color: 'good', message: 'Message from Jenkins Pipeline'
+				slackSend color: 'good', message: 'Build Started - ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)'
 			}
 			
 			
