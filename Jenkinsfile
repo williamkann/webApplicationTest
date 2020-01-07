@@ -35,7 +35,6 @@ pipeline
 			{
 				unstash 'war'
 				sh 'mvn test'
-				junit '/home/william/Bureau/result.xml'
 			}
 		}
 		stage('Analysis ')
