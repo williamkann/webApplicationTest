@@ -33,6 +33,7 @@ pipeline
     			} 
 			steps 
 			{
+				unstash 'war'
 				sh 'mvn test'
 				junit '**/surefire-reports/**/*.xml'
 			}
