@@ -17,7 +17,8 @@ pipeline
 				
             		steps 
 			{
-            			sh 'mvn clean compile'	
+				sh 'mvn clean package'
+				stash name: 'war', includes: 'target/**'
          		}
 		}
 		stage('Test Stage') 					
