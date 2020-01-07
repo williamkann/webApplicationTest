@@ -48,11 +48,10 @@ pipeline
 		{
 			steps
 			{
-				slackSend channel: '#builds', 
-				color: 'good', 
-				message: 'started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)', 
-				teamDomain: 'devopsgr3', 
-				tokenCredentialId: 'slack-webhook'
+				slackSend channel: 'builds',
+					message: 'test builds', 
+					teamDomain: 'devopsgr3', 
+					tokenCredentialId: 'slack-tocken-2'
 			}
 			
 			
