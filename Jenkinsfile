@@ -44,6 +44,13 @@ pipeline
 				sh 'echo non'
 			}
 		}
+		stage('Slack Notification')
+		{
+			slackSend channel: '#builds', 
+				color: 'good', 
+				message: 'started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)', 
+				teamDomain: 'devopsgr3', tokenCredentialId: 'slack-webhook'
+		}
 		stage('Deploy') 
 		{
 			steps 
