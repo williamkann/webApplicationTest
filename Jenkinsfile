@@ -48,12 +48,7 @@ pipeline
 		{
 			steps
 			{
-				slackSend 
-				baseUrl: 'https://hooks.slack.com/services/',
-				channel: '#builds',
-				message: 'test builds', 
-				teamDomain: 'devopsgr3', 
-				tokenCredentialId: 'slack-tocken-2'
+				slackSend color: 'good', message: 'Message from Jenkins Pipeline'
 			}
 			
 			
