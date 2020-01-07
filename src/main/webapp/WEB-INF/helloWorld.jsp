@@ -9,17 +9,21 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Hello World Page</title>
+        <title>Calculator page</title>
     </head>
     <body>
-        <h1>Hello World!</h1>
+        <h1>Hello</h1>
         <form action="Controller" method ="post">
-            <label>Login</label>
-            <input type="text" id="login" name="login">
+            <label>Number 1 : </label>
+            <input type="text" id="number1" name="Number1">
             <br />
-
-            <label>Password</label>
-            <input type="text" id="password" name="password">
+            
+            <label>Number 2 : </label>
+            <input type="text" id="number2" name="Number2">
+            <br />
+            
+            <label>Symbole : </label>
+            <input type="text" id="symbole" name="Symbole">
             <br />
             <input type='submit' name='action' value='ok' />
         </form>

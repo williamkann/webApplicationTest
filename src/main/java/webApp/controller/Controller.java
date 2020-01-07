@@ -6,14 +6,12 @@
 package webApp.controller;
 
 import java.io.IOException;
-import java.io.PrintWriter;
-import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import webApp.beans.User;
+import webApp.beans.Calculator;
 
 /**
  *
@@ -44,16 +42,42 @@ public class Controller extends HttpServlet {
             String lgnContext = conf.getInitParameter("login");
             
             //Data entered by the user
-            User userInput = new User();
-            userInput.setLogin(request.getParameter("login"));
-            userInput.setPwd(request.getParameter("password"));
+            Calculator c = new Calculator();
+            c.setNumber1(Double.parseDouble(request.getParameter("Number1")));
+            c.setNumber2(Double.parseDouble(request.getParameter("Number2")));
+            c.setSymbole(request.getParameter("Symbole"));
             
             //if (dba.checkCredentials(userInput))
-            if (lgnContext.equals(userInput.getLogin()) && pwdContext.equals(userInput.getPwd())) {
-                request.setAttribute("userInput", userInput);
+            if (c.getSymbole().equals("*")) 
+            {
+                c.setResult(c.getNumber1() * c.getNumber2());
+                
+                request.setAttribute("result", c.getResult());
                 request.getRequestDispatcher("/WEB-INF/welcomePage.jsp").forward(request, response);
-            }else {
-                request.setAttribute("errKey", "INVALID");
+            }
+            else if(c.getSymbole().equals("/"))
+            {
+                c.setResult(c.getNumber1() / c.getNumber2());
+                
+                request.setAttribute("result", c.getResult());
+                request.getRequestDispatcher("/WEB-INF/welcomePage.jsp").forward(request, response);
+            }
+            else if(c.getSymbole().equals("+"))
+            {
+                c.setResult(c.getNumber1() + c.getNumber2());
+                
+                request.setAttribute("result", c.getResult());
+                request.getRequestDispatcher("/WEB-INF/welcomePage.jsp").forward(request, response);
+            }
+            else if(c.getSymbole().equals("-"))
+            {
+                c.setResult(c.getNumber1() - c.getNumber2());
+                
+                request.setAttribute("result", c.getResult());
+                request.getRequestDispatcher("/WEB-INF/welcomePage.jsp").forward(request, response);
+            }
+            else {
+                request.setAttribute("errKey", "INVALID FIELDS");
                 request.getRequestDispatcher("/WEB-INF/helloWorld.jsp").forward(request, response);
             }
             
