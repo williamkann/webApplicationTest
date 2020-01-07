@@ -34,6 +34,7 @@ pipeline
 			steps 
 			{
 				sh 'mvn test'
+				junit '**/surefire-reports/**/*.xml'
 			}
 		}
 		stage('Analysis ')
