@@ -20,6 +20,6 @@ public class UnitTest extends TestCase{
         assertEquals(2.0,calc.division(4, 2));
     }
     public void testMultiplication() throws Exception {
-        assertEquals(3.0,calc.multiplication(2, 1));
+        assertEquals(2.0,calc.multiplication(2, 1));
     }
 }
