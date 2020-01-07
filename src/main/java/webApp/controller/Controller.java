@@ -37,9 +37,6 @@ public class Controller extends HttpServlet {
         {
 
             
-            ServletContext conf = this.getServletContext(); //for the init-param servlet
-            String pwdContext = conf.getInitParameter("password"); // See what is in password variable set in the web.xml
-            String lgnContext = conf.getInitParameter("login");
             
             //Data entered by the user
             Calculator c = new Calculator();
@@ -50,30 +47,24 @@ public class Controller extends HttpServlet {
             //if (dba.checkCredentials(userInput))
             if (c.getSymbole().equals("*")) 
             {
-                c.setResult(c.getNumber1() * c.getNumber2());
+               
                 
-                request.setAttribute("result", c.getResult());
+                request.setAttribute("result", c.multiplication(c.getNumber1(), c.getNumber2()));
                 request.getRequestDispatcher("/WEB-INF/welcomePage.jsp").forward(request, response);
             }
             else if(c.getSymbole().equals("/"))
             {
-                c.setResult(c.getNumber1() / c.getNumber2());
-                
-                request.setAttribute("result", c.getResult());
+                request.setAttribute("result", c.division(c.getNumber1(), c.getNumber2()));
                 request.getRequestDispatcher("/WEB-INF/welcomePage.jsp").forward(request, response);
             }
             else if(c.getSymbole().equals("+"))
             {
-                c.setResult(c.getNumber1() + c.getNumber2());
-                
-                request.setAttribute("result", c.getResult());
+                request.setAttribute("result", c.addition(c.getNumber1(), c.getNumber2()));
                 request.getRequestDispatcher("/WEB-INF/welcomePage.jsp").forward(request, response);
             }
             else if(c.getSymbole().equals("-"))
             {
-                c.setResult(c.getNumber1() - c.getNumber2());
-                
-                request.setAttribute("result", c.getResult());
+                request.setAttribute("result", c.substraction(c.getNumber1(), c.getNumber2()));
                 request.getRequestDispatcher("/WEB-INF/welcomePage.jsp").forward(request, response);
             }
             else {
