@@ -48,10 +48,12 @@ pipeline
 		{
 			steps
 			{
-				slackSend channel: 'builds',
-					message: 'test builds', 
-					teamDomain: 'devopsgr3', 
-					tokenCredentialId: 'slack-tocken-2'
+				slackSend 
+				baseUrl: 'https://hooks.slack.com/services/',
+				channel: '#builds',
+				message: 'test builds', 
+				teamDomain: 'devopsgr3', 
+				tokenCredentialId: 'slack-tocken-2'
 			}
 			
 			
