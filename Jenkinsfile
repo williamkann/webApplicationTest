@@ -35,7 +35,7 @@ pipeline
 			{
 				unstash 'war'
 				sh 'mvn test'
-				junit '**/surefire-reports/**/*.xml'
+				junit '/home/william/Bureau/*.xml'
 			}
 		}
 		stage('Analysis ')
