@@ -11,7 +11,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Calculator page</title>
     </head>
-    <body>
+    <body>   
         <h1>Hello</h1>
         <form action="Controller" method ="post">
             <label>Number 1 : </label>
