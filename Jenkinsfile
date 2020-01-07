@@ -48,9 +48,7 @@ pipeline
 		{
 			steps
 			{
-				slackSend 
-				color: 'good',
-				message: 'Build finished !'
+				slackSend color: 'good', message: 'Message from Jenkins Pipeline'
 			}
 			
 			
