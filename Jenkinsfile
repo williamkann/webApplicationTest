@@ -2,16 +2,7 @@ pipeline
 {
 	agent any
 	stages 
-	{
-		stage('Compile Stage') 
-		{
-			steps 
-			{
-				sh 'mvn clean compile'	
-			}
-			
-		}
-	
+	{	
         	stage('Build')
 		{ 
 
@@ -26,8 +17,7 @@ pipeline
 				
             		steps 
 			{
-            			sh 'mvn -B -DskipTests clean package'
-				stash name: 'war', includes: 'target/**'
+            			sh 'mvn clean compile'	
          		}
 		}
 		stage('Test Stage') 					
