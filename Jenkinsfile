@@ -37,11 +37,21 @@ pipeline
 				sh 'mvn test'
 			}
 		}
-		stage('Analysis ')
+		stage('Sonarqube Analysis')
 		{
+			agent
+			{
+	      			docker
+				{
+		    			image 'maven:3-alpine' 
+		    			args '-v /root/.m2:/root/.m2' 
+				}
+    			} 
 			steps 
 			{
-				sh 'echo non'
+				withSonarQubeEnv('Sonar'){
+					sh 'mvn clean package sonar:sonar'
+				}
 			}
 		}
 		
