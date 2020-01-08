@@ -29,6 +29,13 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        
+        <dependency>
+            <groupId>org.codehaus.mojo</groupId>
+            <artifactId>sonar-maven-plugin</artifactId>
+            <version>3.4.0.905</version>
+            <scope>pom</scope>
+        </dependency>
 
     </dependencies>
     
