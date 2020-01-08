@@ -11,7 +11,7 @@ public class UnitTest extends TestCase{
     Calculator calc = new Calculator();
     
     public void testAddition() throws Exception {
-        assertEquals(2.0,calc.addition(1, 1));
+        assertEquals(3.0,calc.addition(1, 1));
     }
     public void testSubstraction() throws Exception {
         assertEquals(2.0,calc.substraction(3, 1));
