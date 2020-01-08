@@ -44,15 +44,7 @@ pipeline
 				sh 'echo non'
 			}
 		}
-		stage('Slack Notification')
-		{
-			steps
-			{
-				slackSend color: 'good', message: 'Build Finished !'
-			}
-			
-			
-		}
+		
 		stage('Deploy') 
 		{
 			steps 
