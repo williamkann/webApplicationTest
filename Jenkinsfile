@@ -61,4 +61,18 @@ pipeline
 			}
 		}
 	}
+	post {
+       // only triggered when blue or green sign
+       success {
+           slackSend color: 'good', message: 'Build Successful !'
+       }
+       // triggered when red sign
+       failure {
+           slackSend color: 'good', message: 'Build failed !'
+       }
+       // trigger every-works
+       always {
+           slackSend color: 'good', message: 'Build Finished !'
+       }
+    }
 }
